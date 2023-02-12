@@ -28,7 +28,7 @@ ex) 예외: 모든 객체는 [[Prototype]]이라는 내부 슬롯을 가짐 - `_
 ### 데이터 프로퍼티
 
 - [[Value]]
-- [[Writable]]: rkqtdml qusrud rksmdduqn,  false면 readonly
+- [[Writable]]: 값의 변경 가능 여부,  false면 readonly
 - [[Enumerable]]: false면 for...in 문이나 Object.keys 메서드 등으로 열거할 수X
 - [[Configurable]]  
   \- false면 프로퍼티 삭제, 어트리뷰트 값 변경 금지  
@@ -72,8 +72,6 @@ console.log(person.fullName); // Marie Kim
 > **프로토타입**
 > 객체의 부모 객체 역할을 하는 객체  
 > **프로토타입 체인** 프로토타입이 단방향 링크드 리스트 형태로 연결되어 있는 상속 구조  
-
-16-07 예제..?
 
 ## 프로퍼티 정의
 
@@ -553,6 +551,34 @@ console.log(circle2.getArea()); // 12.566370614359172
 함수 객체만이 소유하는 prototype 프로퍼티는 생성자 함수가 생성할 인스턴스의 프로토타입을 가리킨다. 
 
 non-constructor (메서드 - ES6 메서드 축약 표현을 칭함, 화살표 함수)는 prototype 프로퍼티를 소유하지 않으며 프로토타입도 생성하지 않는다. 
+
+모든 객체의 \_\_proto\_\_와 함수 객체의 prototype 프로퍼티는 결국 동일한 프로토타입을 가리킨다.
+
+- \_\_proto\_\_ 접근자 프로퍼티
+  
+  - 모든 객체 소유
+  
+  - 프로토타입의 참조
+  
+  - 객체가 자신의 프로토타입에 접근 또는 교체하기 위해 사용
+
+- prototype 프로퍼티
+  
+  - constructor 소유
+  
+  - 프로토타입의 참조
+  
+  - 생성자 함수가 자신이 생성할 객체의 프로토타입을 할당하기 위해 사용
+
+```javascript
+function Person(name) {
+    this.name = name;
+}
+const me = new Person('Lee');
+console.log(Person.prototype === me.__proto__);
+```
+
+
 
 
 
