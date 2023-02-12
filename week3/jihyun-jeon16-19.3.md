@@ -119,7 +119,7 @@ new 연산자와 함께 생성자 함수를 호출하면
 - 일반함수로 호출되면 [[Call]] 이 호출되고, 생성자 함수로 호출되면 [[Construct]]이 호출된다.
 
 - 모든 함수 객체는 호출할 수 있는 callable 이지만, 모든 함수 객체가 “생성자 함수”로서 호출할 수 있는 것은 아니다.
-![Untitled](./constructor.png)
+![Untitled](constructor.png)
     
 
 ### constructor와 non-constructor의 구분
@@ -342,7 +342,7 @@ prototype 프로퍼티는 생성자 함수가 생성할 인스턴스의 프로�
 - [[prototpye]] 에 프로토타입 객체가 저장된다.
 - 따라서 모든 객체는 하나의 프로토타입을 갖고, 모든 프로토타입은 생성자 함수와 연결되어 있다.
     
-    ![prototype.jpeg](./prototype.jpeg)
+    ![prototype.jpeg](prototype.jpeg)
     
 
 - 프로토타입 객체는 자신의 contsructor 프로퍼티를 이용하여 생성자 함수에 접근할 수 있다.
