@@ -90,7 +90,7 @@ construct 와 non-constructor 얘기하는거 같음
 
 ## 19.10 instanceof 연산자
 우변의 생성자함수의 프로토타입에 바인딩된 객체가 좌변의 객체의 프로토타입 체인사에 존재한다면 true
- <br/> ex) 우변 > 좌변
+ <br/> ex) 우변 < 좌변
 ```js
 function Person(name){
     this.name = name;
