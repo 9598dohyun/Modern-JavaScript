@@ -101,3 +101,34 @@ console.log(me instanceof Person); // true
 
 console.log(me instanceof Object); // true
 ```
+
+## 19.11 직접 상속
+장점
+1. new 연산자가 없이도 객체생성 가능
+2. 프로토타입을 지정하면서 객체생성가능
+3. 객체리터럴에 의해 생성된 객체도 상속가능
+
+단점
+프로토타입이 값이 null인 객체는 프로토타입 체인의 종점에 위치하는 객체를 생성한다 
+<br/>-> 종점에 위치하는 객체는 object.prototype의 빌트인메서드를 사용하수 없기 때문에
+
+*따라서 직접적으로 호출하기보다는 call을 사용하여 간접적으로 호출하는것이 좋아보인다*
+하지만 나는 어디에 써야 할지 감이 안잡힌다.
+
+=> 객체 리터럴 내부에서 _\_proto _\_접근자 프로퍼티를 사용하여 집적사용을 구현하자
+
+```js
+const Proto = {x:10};
+// 객체 리터럴에 의해 객체를 생성하면서 프로토타입을 지정하여 직접 상속 가능!
+const obj = {
+    y:20,
+    //객체를 직접 상속받는다.
+    __proto__: Proto
+    //아래와 같다!
+    // const obj1 = Object.create(Proto,{
+//     y:{value:20,writable:ture ~~~}
+
+};
+
+console.log(obj.x,obj.y); // 10 , 20
+```
