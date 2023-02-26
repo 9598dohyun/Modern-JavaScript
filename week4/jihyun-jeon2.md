@@ -332,7 +332,7 @@ const obj = {
 - bind 예제2<br/>
 :콜백함수가 “일반함수"로 호출되기 때문에 this는 window인데, bind로 this를 person으로 직접 지정해줌.<br/>
 : [질문] bind 안의 this가 어떻게 person을 가리키는건지?<br/>
- &nbsp; [답변] bind는 foo함수에서 실행 된다. 때문에 foo 함수 내부의 this는 person이기 때문에, bind의 this에는 person 객체가 되는 것임.
+ &nbsp; [답변] bind는 foo함수에서 실행아 된다. 때문에 foo 함수 내부의 this는 person이기 때문에, bind의 this에는 person 객체가 되는 것임.
     
     ```jsx
     const person = {
