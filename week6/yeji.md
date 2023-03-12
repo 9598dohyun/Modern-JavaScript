@@ -138,7 +138,180 @@ for (const item of [1, 2, 3]){
   - 스프레드 프로퍼티: Spread properties in object initializers copies own enumerable properties from a provided object onto the newly created object.
     
     [GitHub - tc39/proposal-object-rest-spread: Rest/Spread Properties for ECMAScript](https://github.com/tc39/proposal-object-rest-spread)
-    
-    
+
+# 36장: 디스트럭처링 할당
+
+구조화된 배열과 같은 이터러블 또는 객체를 destructuring(비구조화, 파괴)하여 1개 이상의 변수에 개별적으로 할당하는 것 
+
+## 36.1 배열 디스트럭처링 할당
+
+```javascript
+const arr = [1, 2, 3];
+const [one, two, three] = arr; 
+let x, y;
+[x, y]= [1, 2]; 
+
+// 변수의 개수와 이터러블의 요소 개수가 반드시 일치할 필요 X
+const [c, d] = [1]; // d === undefined
+const [e, f] = [1, 2, 3];
+const [g, ,h] = [1, 2, 3]; // g === 1, h ===3 
+
+// 변수에 기본값 설정 가능
+// 기본값보다 할당된 값이 우선
+const [j, k = 10, l = 3] = [1, 2];
+console.log(j, k, l); // 1, 2, 3
+
+//Rest 요소 사용 가능
+const [x, ...y] = [1, 2, 3];
+console.log(x, y); // 1 [2, 3]
+```
+
+## 36.2 객체 디스트럭처링 할당
+
+객체 디스트럭처링 할당은 객체의 각 프로퍼티를 객체로부터 추출해 1개 이상의 변수에 할당
+
+할당의 대상(우변)은 객채여야 하며, 할당 기준은 프로퍼티
+
+```javascript
+// 순서는 의미가 없으며 선언된 변수 이름과 프로퍼티 키가 일치하면 할당
+const {lastName, firstName} = {firstName: 'marie', lastName: 'kim'};
+
+// 객체 프로퍼티 키와 다른 변수 이름으로 프로퍼티 값을 할당받으려면 다음과 같이 
+const {lastName: ln, firstName: fn} = {firstName: 'marie', lastName: 'kim'};
+
+// 변수에 기본값 설정 가능 
+const {firstName = 'marie', lastName} = {lastName: 'kim';}
+
+// 원하는 프로퍼티만 추출하고 싶을 때 유용
+const todo = {id: 1, content: 'HTML', completed: true};
+const {id} = todo;
+
+// 매개변수에도 활용 가능
+function printTodo({ content, completed }) {
+    console.log('${content}의 완료 상태는 ${completed}');
+}
+printTodo({id: 1, content: 'HTML', completed: true});
+
+// 배열 요소가 객체일 때 배열 디스트럭쳐링 + 객체 디스트럭처링
+const todos = [
+  { id: 1, content: 'HTML', completed: true },
+  { id: 2, content: 'CSS', completed: false },
+  { id: 3, content: 'JS', completed: false }
+];
+
+const [, { id }] = todos; // todos 배열의 두 번째 요소인 객체로부터 id 프로퍼티만 추출한다.
+console.log(id); // 2
+
+// 중첩객체
+const user = {
+  name: 'Lee',
+  address: {
+    zipCode: '03068',
+    city: 'Seoul'
+  }
+};
+
+// address 프로퍼티 키로 객체를 추출하고 이 객체의 city 프로퍼티 키로 값을 추출한다.
+const { address: { city } } = user;
+console.log(city); // 'Seoul'
+```
+
+
+
+# 37장: Set과 Map
+
+## 37.1 Set
+
+중복되지 않는 유일한 값들의 집합 
+
+자바스크립트의 모든 값을 요소로 저장할 수 있다. 
+
+
+
+- size 프로퍼티
+
+- add 메서드 
+  
+  - 반환값: 새로운 요소가 추가된 Set 객체 - 메서드 체이닝 가능
+
+- has 메서드
+
+- delete 메서드 
+  
+  - 인수: 삭제하려는 요소의 '값'
+  
+  - 반환값: 불리언 - 메서드 체이닝 불가능
+  
+  - 존재하지 않는 요소를 삭제하려고 하면 에러 없이 무시)
+
+- clear 메서드
+
+- forEach 메서드
+  
+  - `forEach(현재 순회 중인 요소 값, 현재 순회 중인 요소 값, 현재 순회 중인 set 객체 자체)`
+
+- 이터러블이므로 스프레드 문법, 배열 디스트럭처링의 대상이 될 수 있음.
+
+
+
+집합 연산 - 프로토타입 메서드 직접 구현해야
+
+- 교집합(intersection)
+
+- 합집합(union)
+
+- 차집합(difference)
+
+- 부분집합, 상위 집합
+
+
+
+## 37.2 Map
+
+키와 값의 쌍으로 이뤄진 컬렉션.
+
+키로 객체를 포함한 모든 값을 사용할 수 있으며, 이터러블이다. 
+
+- 생성
+  
+  - 인수: 키와 값의 쌍으로 이뤄진 요소로 구성된 이터러블 
+  
+  - 중복된 키를 갖는 요소가 존재하면 값이 덮어써진다 
+
+- size 프로퍼티 
+
+- set 메서드
+  
+  - 반환값: 새로운 요소가 추가된 Map 객체 - 메서드 체이닝 가능 
+
+- get 메서드
+  
+  - 전달한 키를 갖는 요소가 없으면 undefined
+
+- has 메서드 
+
+- delete 메서드 
+  
+  - 존재하지 않는 키로 삭제하려 하면 에러없이 무시 
+  
+  - 반환값: 불리언 - 메서드 체이닝 불가 
+
+- clear 메서드
+
+- `forEach(현재 순회 중인 요소 값, 현재 순회 중인 요소 키, 현재 순회 중인 Map 객체 자체)`
+
+- 이터러블이므로 스프레드 문법, 배열 디스럭처링 할당 가능 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
