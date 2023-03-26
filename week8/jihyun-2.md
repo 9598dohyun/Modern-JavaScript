@@ -4,7 +4,7 @@
 
 이벤트가 발생했을 때 이벤트 핸들러 호출을 브라우저에게 위임하여 작동되는 것임 (이벤트 핸들러 등록)
 
----
+
 ## 이벤트 타입
 
 - dbclick : 마우스 더블 클릭시
@@ -23,7 +23,7 @@
 
 - unload : 리소스가 언로드 될 때
 
---- 
+ 
 
 ## 이벤트 핸들러 등록 방식 3가지
 
@@ -95,7 +95,7 @@ function sayHi (name){
 </body>
 ```
 
----
+
 ## 이벤트 핸들러 제거
 
 `removeEventListener(type, listener, useCapture);`
@@ -124,7 +124,7 @@ function sayHi (name){
       </body>
     ```
 
----    
+    
 ## 이벤트 객체
 
 - 이벤트 객체를 이벤트 핸들러의 첫 번째 인수로 전달된다.
@@ -151,7 +151,7 @@ function sayHi (name){
 - 체크박스의 체크 상태 : e.target.checked // true, false
 - 키보드 이벤트에서 : keycode는 폐지됨. → key 프로퍼티 사용하기
 
----
+
 ## 이벤트 전파
 
 - 이벤트 발생시 이벤트 객체가 생성되는데 이 이벤트 객체가 전파되는 순서는 다음과 같다.
@@ -196,7 +196,7 @@ function sayHi (name){
 
 3) mouseenter, mouseleave (버블링ㅇ - mouseover, mouseout)
 
----
+
 ## 이벤트 위임
 
 - 하위요소 각각에 동일한 이벤트를 바인딩 하는게 아니라, 상위요소 하나에만 이벤트 바인딩을 하여 이벤트 위임 활용<br/>
@@ -216,7 +216,7 @@ function sayHi (name){
   </script>
   </body>
 ```
----
+
 ## 이벤트 기본동작 막기
 
 - `e.preventDefault()` : dom요소의 기본 동작을 중단시킨다.
@@ -259,7 +259,7 @@ function sayHi (name){
 //  e.stopPropagation()이 없다면 출력 결과 : "click two" "click ul"
 ```
 
----
+
 ## 이벤트 핸들러 내부의 this
 
 - 이벤트 핸들러 함수 내부의 this는
