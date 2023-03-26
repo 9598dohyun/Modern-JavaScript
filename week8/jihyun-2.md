@@ -4,6 +4,7 @@
 
 이벤트가 발생했을 때 이벤트 핸들러 호출을 브라우저에게 위임하여 작동되는 것임 (이벤트 핸들러 등록)
 
+<br/>
 
 ## 이벤트 타입
 
@@ -23,6 +24,7 @@
 
 - unload : 리소스가 언로드 될 때
 
+<br/>
  
 
 ## 이벤트 핸들러 등록 방식 3가지
@@ -95,6 +97,7 @@ function sayHi (name){
 </body>
 ```
 
+<br/>
 
 ## 이벤트 핸들러 제거
 
@@ -124,6 +127,7 @@ function sayHi (name){
       </body>
     ```
 
+<br/>
     
 ## 이벤트 객체
 
@@ -151,6 +155,7 @@ function sayHi (name){
 - 체크박스의 체크 상태 : e.target.checked // true, false
 - 키보드 이벤트에서 : keycode는 폐지됨. → key 프로퍼티 사용하기
 
+<br/>
 
 ## 이벤트 전파
 
@@ -196,6 +201,7 @@ function sayHi (name){
 
 3) mouseenter, mouseleave (버블링ㅇ - mouseover, mouseout)
 
+<br/>
 
 ## 이벤트 위임
 
@@ -216,6 +222,8 @@ function sayHi (name){
   </script>
   </body>
 ```
+
+<br/>
 
 ## 이벤트 기본동작 막기
 
@@ -258,6 +266,8 @@ function sayHi (name){
 
 //  e.stopPropagation()이 없다면 출력 결과 : "click two" "click ul"
 ```
+
+<br/>
 
 
 ## 이벤트 핸들러 내부의 this
